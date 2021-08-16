@@ -12,6 +12,14 @@
       </div>
     </header>
 
+    <!-- error div -->
+    <div
+      v-if="error"
+      class="text-center font-bold text-base w-2/5 mx-auto bg-red-500 text-white rounded-md py-2 mt-10"
+    >
+      {{ error }}
+    </div>
+
     <!-- blog details -->
     <div v-if="blog" class="bg-gray-300  my-3 p-4 rounded-md ">
       <h2 class="font-bold text-xl">{{ blog.title }}</h2>
@@ -38,7 +46,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import getPost from '../composables/getPost';
 
 export default {
   props: {
@@ -47,21 +55,11 @@ export default {
     },
   },
   setup(props) {
-    const blog = ref(null);
-    const error = ref(null);
+    const { blog, error, load } = getPost(props.id);
 
-    onMounted(async () => {
-      try {
-        let blogPost = await fetch(`http://localhost:3000/posts/${props.id}`);
-        if (!blogPost.ok) {
-          throw Error('Can not fetch blog details!!!');
-        }
-        blog.value = await blogPost.json();
-      } catch (err) {
-        error.value = err.message;
-      }
-    });
-    return { blog };
+    load();
+
+    return { blog, error };
   },
 };
 </script>
