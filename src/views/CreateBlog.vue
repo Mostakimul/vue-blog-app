@@ -5,7 +5,10 @@
 
     <!-- Main content -->
     <main>
-      <form class="bg-purple-700 w-1/2 mx-auto p-5 rounded-md">
+      <form
+        @submit.prevent="handleBlog"
+        class="bg-purple-700 w-1/2 mx-auto p-5 rounded-md"
+      >
         <label class="block text-base text-white font-medium p-2 "
           >Title:
         </label>
@@ -56,6 +59,7 @@
 <script>
 import TheHeader from '@/components/TheHeader.vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 export default {
   name: 'CreateBlog',
   components: {
@@ -66,6 +70,7 @@ export default {
     const body = ref('');
     const tag = ref('');
     const tags = ref([]);
+    const router = useRouter();
 
     // Tag
     const handleTag = () => {
@@ -79,7 +84,25 @@ export default {
       tag.value = '';
     };
 
-    return { title, body, tag, handleTag, tags };
+    // Adding blog
+    const handleBlog = async () => {
+      const blog = {
+        title: title.value,
+        body: body.value,
+        tags: tags.value,
+      };
+      // fetch request
+      await fetch('http://localhost:3000/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(blog),
+      });
+      router.push({
+        name: 'Home',
+      });
+    };
+
+    return { title, body, tag, handleTag, tags, handleBlog };
   },
 };
 </script>
