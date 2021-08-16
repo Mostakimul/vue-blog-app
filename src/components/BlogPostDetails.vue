@@ -13,12 +13,7 @@
     </header>
 
     <!-- error div -->
-    <div
-      v-if="error"
-      class="text-center font-bold text-base w-2/5 mx-auto bg-red-500 text-white rounded-md py-2 mt-10"
-    >
-      {{ error }}
-    </div>
+    <TheError :error="error" />
 
     <!-- blog details -->
     <div v-if="blog" class="bg-gray-300  my-3 p-4 rounded-md ">
@@ -33,26 +28,24 @@
       <p class="text-base text-gray-700">{{ blog.body }}</p>
     </div>
     <!-- loading -->
-    <div v-else class="text-center">
-      <button
-        type="button"
-        class="bg-red-600 py-2 px-5 font-semibold text-white rounded-md"
-        disabled
-      >
-        Processing...
-      </button>
-    </div>
+    <TheLoader v-else />
   </div>
 </template>
 
 <script>
 import getPost from '../composables/getPost';
+import TheLoader from './TheLoader.vue';
+import TheError from './TheError.vue';
 
 export default {
   props: {
     id: {
       type: String,
     },
+  },
+  components: {
+    TheLoader,
+    TheError,
   },
   setup(props) {
     const { blog, error, load } = getPost(props.id);

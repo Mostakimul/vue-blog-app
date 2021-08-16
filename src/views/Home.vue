@@ -14,26 +14,13 @@
     <!-- Main Content -->
     <main>
       <!-- error div -->
-      <div
-        v-if="error"
-        class="text-center font-bold text-base w-2/5 mx-auto bg-red-500 text-white rounded-md py-2 mt-10"
-      >
-        {{ error }}
-      </div>
+      <TheError :error="error" />
       <!-- Passign through props -->
       <div v-if="posts.length">
         <BlogList :posts="posts" />
       </div>
       <!-- loading -->
-      <div v-else class="text-center">
-        <button
-          type="button"
-          class="bg-red-600 py-2 px-5 font-semibold text-white rounded-md"
-          disabled
-        >
-          Processing...
-        </button>
-      </div>
+      <TheLoader v-else />
     </main>
   </div>
 </template>
@@ -41,11 +28,15 @@
 <script>
 import BlogList from '@/components/BlogList.vue';
 import getPosts from '../composables/getPosts';
+import TheLoader from '../components/TheLoader.vue';
+import TheError from '../components/TheError.vue';
 
 export default {
   name: 'Home',
   components: {
     BlogList,
+    TheLoader,
+    TheError,
   },
   setup() {
     // Destructing the function to get values
