@@ -1,16 +1,7 @@
 <template>
   <div class="lg:container mx-auto">
     <!-- Header -->
-    <header class="mb-10">
-      <div>
-        <img
-          class="w-40 mx-auto"
-          src="../assets/logo.png"
-          alt="Vue Blog Logo"
-        />
-        <h2 class="text-4xl font-bold text-center">Vue Blog Details</h2>
-      </div>
-    </header>
+    <TheHeader />
 
     <!-- error div -->
     <TheError :error="error" />
@@ -36,6 +27,7 @@
 import getPost from '../composables/getPost';
 import TheLoader from './TheLoader.vue';
 import TheError from './TheError.vue';
+import TheHeader from '@/components/TheHeader.vue';
 
 export default {
   props: {
@@ -46,6 +38,7 @@ export default {
   components: {
     TheLoader,
     TheError,
+    TheHeader,
   },
   setup(props) {
     const { blog, error, load } = getPost(props.id);

@@ -1,16 +1,7 @@
 <template>
   <div class="lg:container mx-auto">
     <!-- Header -->
-    <header class="mb-10">
-      <div>
-        <img
-          class="w-40 mx-auto"
-          src="../assets/logo.png"
-          alt="Vue Blog Logo"
-        />
-        <h2 class="text-4xl font-bold text-center">Vue Blog</h2>
-      </div>
-    </header>
+    <TheHeader />
     <!-- Main Content -->
     <main>
       <!-- error div -->
@@ -30,6 +21,7 @@ import BlogList from '@/components/BlogList.vue';
 import getPosts from '../composables/getPosts';
 import TheLoader from '../components/TheLoader.vue';
 import TheError from '../components/TheError.vue';
+import TheHeader from '../components/TheHeader.vue';
 
 export default {
   name: 'Home',
@@ -37,6 +29,7 @@ export default {
     BlogList,
     TheLoader,
     TheError,
+    TheHeader,
   },
   setup() {
     // Destructing the function to get values
