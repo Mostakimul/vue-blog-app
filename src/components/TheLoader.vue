@@ -5,7 +5,10 @@
       class="bg-red-600 py-2 px-5 mt-5 font-semibold text-white rounded-md"
       disabled
     >
-      Processing...
+      <span
+        class="animate-spin mr-2 inline-block w-5 h-5 border-solid border-transparent rounded-full border-t-2 border-white"
+      ></span
+      >Processing
     </button>
   </div>
 </template>

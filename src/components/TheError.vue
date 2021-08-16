@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="error"
-    class="text-center font-bold text-base w-2/5 mx-auto bg-red-500 text-white rounded-md py-2 mt-10"
+    class="text-center font-medium text-base w-2/5 mx-auto bg-red-600 text-white rounded-md py-2 mt-10"
   >
     {{ error }}
   </div>
