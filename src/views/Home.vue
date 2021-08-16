@@ -40,33 +40,20 @@
 
 <script>
 import BlogPost from '@/components/BlogPost.vue';
-import { ref } from '@vue/reactivity';
+import getPosts from '../composables/getPosts';
+
 export default {
   name: 'Home',
   components: {
     BlogPost,
   },
   setup() {
-    const posts = ref([]);
-    const error = ref(null);
+    // Destructing the function to get values
+    const { posts, error, load } = getPosts();
 
-    // fetching data
-    const load = async () => {
-      try {
-        let data = await fetch('http://localhost:3000/posts');
-        // console.log(data);
-        if (!data.ok) {
-          throw Error('Can not fetch data!!!');
-        }
-        posts.value = await data.json();
-        console.log(posts.value);
-      } catch (err) {
-        error.value = err.message;
-        // console.log(error.value);
-      }
-    };
-
+    // after running load we can have posts
     load();
+
     return { posts, error };
   },
 };
