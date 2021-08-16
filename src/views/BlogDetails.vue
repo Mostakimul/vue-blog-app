@@ -1,7 +1,7 @@
 <template>
-  <div class="lg:container mx-auto">
-    <!-- Header -->
-    <TheHeader :page="page" />
+  <div>
+    <!-- The Page Title -->
+    <ThePageTitle :page="page" />
 
     <!-- error div -->
     <TheError :error="error" />
@@ -25,9 +25,10 @@
 
 <script>
 import getPost from '../composables/getPost';
-import TheLoader from './TheLoader.vue';
-import TheError from './TheError.vue';
+import TheLoader from '@/components/TheLoader.vue';
+import TheError from '@/components/TheError.vue';
 import TheHeader from '@/components/TheHeader.vue';
+import ThePageTitle from '@/components/ThePageTitle.vue';
 
 export default {
   props: {
@@ -39,6 +40,7 @@ export default {
     TheLoader,
     TheError,
     TheHeader,
+    ThePageTitle,
   },
   setup(props) {
     const page = 'Blog Details';

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="bg-gray-300 font-bold my-3 p-4 rounded-md text-xl">
-      <router-link :to="{ name: 'BlogPostDetails', params: { id: post.id } }">
+      <router-link :to="{ name: 'BlogDetails', params: { id: post.id } }">
         <h2>{{ post.title }}</h2>
       </router-link>
       <p class="text-base text-gray-700">{{ postBody }}</p>

@@ -1,13 +1,15 @@
 <template>
-  <div class="lg:container mx-auto">
-    <!-- header -->
-    <TheHeader :page="page" />
+  <div>
+    <!-- The Page Title -->
+    <div class="text-center mb-3">
+      <ThePageTitle :page="page" />
+    </div>
 
     <!-- Main content -->
     <main>
       <form
         @submit.prevent="handleBlog"
-        class="bg-purple-700 w-1/2 mx-auto p-5 rounded-md"
+        class="bg-gradient-to-r from-green-400 to-green-600 w-1/2 mx-auto p-5 rounded-md"
       >
         <label class="block text-base text-white font-medium p-2 "
           >Title:
@@ -47,7 +49,7 @@
         </p>
 
         <button
-          class="block w-full bg-indigo-400 py-2 rounded-full text-white font-semibold my-3"
+          class="block w-full bg-green-800 py-2 rounded-full text-white font-semibold my-3"
         >
           Add Blog
         </button>
@@ -58,12 +60,14 @@
 
 <script>
 import TheHeader from '@/components/TheHeader.vue';
+import ThePageTitle from '@/components/ThePageTitle.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 export default {
   name: 'CreateBlog',
   components: {
     TheHeader,
+    ThePageTitle,
   },
   setup() {
     const page = 'Add New Blog';

@@ -1,18 +1,19 @@
 <template>
-  <header class="mb-10">
-    <div>
-      <img class="w-40 mx-auto" src="../assets/logo.png" alt="Vue Blog Logo" />
-      <h2 class="text-4xl font-bold text-center">{{ page }}</h2>
+  <header class="py-5">
+    <div class="flex justify-between items-center">
+      <router-link :to="{ name: 'Home' }"
+        ><img class="w-14" src="../assets/logo.png" alt="Vue Blog Logo"
+      /></router-link>
+      <TheNavbar />
     </div>
   </header>
 </template>
 
 <script>
+import TheNavbar from './TheNavbar.vue';
 export default {
-  props: {
-    page: {
-      type: String,
-    },
+  components: {
+    TheNavbar,
   },
 };
 </script>
