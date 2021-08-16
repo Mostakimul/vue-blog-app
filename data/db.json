@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Learning Vue js in 2021!",
+      "body": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id qui at autem reiciendis odio, inventore repellat cum necessitatibus pariatur perferendis.",
+      "tags": ["vuejs", "vue 3", "composition API"]
+    },
+    {
+      "id": 2,
+      "title": "Is Laravel is the best framework!!!",
+      "body": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id qui at autem reiciendis odio, inventore repellat cum necessitatibus pariatur perferendis.",
+      "tags": ["php", "laravel"]
+    }
+  ]
+}
