@@ -29,6 +29,7 @@ import TheLoader from '@/components/TheLoader.vue';
 import TheError from '@/components/TheError.vue';
 import TheHeader from '@/components/TheHeader.vue';
 import ThePageTitle from '@/components/ThePageTitle.vue';
+// import { useRoute } from 'vue-router';
 
 export default {
   props: {
@@ -43,7 +44,12 @@ export default {
     ThePageTitle,
   },
   setup(props) {
+    // useRoute (we can have different things like params)
+    // const route = useRoute;
+    // console.log(route.params.id);
+
     const page = 'Blog Details';
+    // we can use useRoute to get id or feom props as well
     const { blog, error, load } = getPost(props.id);
 
     load();
