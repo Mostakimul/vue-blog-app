@@ -1,7 +1,7 @@
 <template>
   <div class="lg:container mx-auto">
     <!-- Header -->
-    <TheHeader />
+    <TheHeader :page="page" />
 
     <!-- error div -->
     <TheError :error="error" />
@@ -41,11 +41,12 @@ export default {
     TheHeader,
   },
   setup(props) {
+    const page = 'Blog Details';
     const { blog, error, load } = getPost(props.id);
 
     load();
 
-    return { blog, error };
+    return { blog, error, page };
   },
 };
 </script>

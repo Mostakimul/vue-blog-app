@@ -1,7 +1,7 @@
 <template>
   <div class="lg:container mx-auto">
     <!-- header -->
-    <TheHeader />
+    <TheHeader :page="page" />
 
     <!-- Main content -->
     <main>
@@ -66,6 +66,7 @@ export default {
     TheHeader,
   },
   setup() {
+    const page = 'Add New Blog';
     const title = ref('');
     const body = ref('');
     const tag = ref('');
@@ -102,7 +103,7 @@ export default {
       });
     };
 
-    return { title, body, tag, handleTag, tags, handleBlog };
+    return { title, body, tag, handleTag, tags, handleBlog, page };
   },
 };
 </script>

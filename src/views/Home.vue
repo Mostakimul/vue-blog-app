@@ -1,7 +1,7 @@
 <template>
   <div class="lg:container mx-auto">
     <!-- Header -->
-    <TheHeader />
+    <TheHeader :page="page" />
     <!-- Main Content -->
     <main>
       <!-- error div -->
@@ -32,13 +32,14 @@ export default {
     TheHeader,
   },
   setup() {
+    const page = 'Vue Blog Home';
     // Destructing the function to get values
     const { posts, error, load } = getPosts();
 
     // after running load we can have posts
     load();
 
-    return { posts, error };
+    return { posts, error, page };
   },
 };
 </script>
