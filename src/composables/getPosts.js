@@ -13,7 +13,7 @@ const getPosts = () => {
         throw Error('Can not fetch data!!!');
       }
       posts.value = await data.json();
-      console.log(posts.value);
+      // console.log(posts.value);
     } catch (err) {
       error.value = err.message;
       // console.log(error.value);

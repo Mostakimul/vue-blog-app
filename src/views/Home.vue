@@ -22,7 +22,7 @@
       </div>
       <!-- Passign through props -->
       <div v-if="posts.length">
-        <BlogPost :posts="posts" />
+        <BlogList :posts="posts" />
       </div>
       <!-- loading -->
       <div v-else class="text-center">
@@ -39,13 +39,13 @@
 </template>
 
 <script>
-import BlogPost from '@/components/BlogPost.vue';
+import BlogList from '@/components/BlogList.vue';
 import getPosts from '../composables/getPosts';
 
 export default {
   name: 'Home',
   components: {
-    BlogPost,
+    BlogList,
   },
   setup() {
     // Destructing the function to get values
