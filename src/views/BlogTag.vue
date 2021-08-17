@@ -6,8 +6,9 @@
     <TheError :error="error" />
 
     <!-- Filtered post -->
-    <div v-if="posts.length">
-      <BlogList :posts="filterTagPost" />
+    <div v-if="posts.length" class="grid grid-cols-4 gap-4">
+      <BlogList :posts="filterTagPost" class="col-span-3" />
+      <BlogTags :posts="posts" />
     </div>
     <!-- loading -->
     <TheLoader v-else />
@@ -22,6 +23,7 @@ import BlogList from '../components/BlogList.vue';
 import TheError from '../components/TheError.vue';
 import ThePageTitle from '../components/ThePageTitle.vue';
 import { useRoute } from 'vue-router';
+import BlogTags from '../components/BlogTags.vue';
 
 export default {
   props: {
@@ -34,6 +36,7 @@ export default {
     TheLoader,
     BlogList,
     ThePageTitle,
+    BlogTags,
   },
   setup(props) {
     const page = `All ${props.tag} posts`;

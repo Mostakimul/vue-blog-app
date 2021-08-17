@@ -6,8 +6,9 @@
     <!-- error div -->
     <TheError :error="error" />
     <!-- Passign through props -->
-    <div v-if="posts.length">
-      <BlogList :posts="posts" />
+    <div v-if="posts.length" class="grid grid-cols-4 gap-4">
+      <BlogList :posts="posts" class="col-span-3" />
+      <BlogTags :posts="posts" />
     </div>
     <!-- loading -->
     <TheLoader v-else />
@@ -21,6 +22,7 @@ import TheLoader from '../components/TheLoader.vue';
 import TheError from '../components/TheError.vue';
 import TheHeader from '../components/TheHeader.vue';
 import ThePageTitle from '../components/ThePageTitle.vue';
+import BlogTags from '@/components/BlogTags.vue';
 
 export default {
   name: 'Home',
@@ -30,6 +32,7 @@ export default {
     TheError,
     TheHeader,
     ThePageTitle,
+    BlogTags,
   },
   setup() {
     const page = 'Vue Blog Home';
