@@ -14,7 +14,9 @@
         :key="tag"
         class="inline-block bg-purple-600 text-gray-200 my-2 mr-2 py-1 px-2 text-xs font-semibold rounded-full"
       >
-        {{ tag }}
+        <router-link :to="{ name: 'BlogTag', params: { tag: tag } }">{{
+          tag
+        }}</router-link>
       </p>
       <p class="text-base text-gray-700">{{ blog.body }}</p>
     </div>
@@ -45,7 +47,7 @@ export default {
   },
   setup(props) {
     // useRoute (we can have different things like params)
-    // const route = useRoute;
+    // const route = useRoute();
     // console.log(route.params.id);
 
     const page = 'Blog Details';

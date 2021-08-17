@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
-// import BlogPostDetails from '@/components/BlogPostDetails.vue';
 import BlogDetails from '@/views/BlogDetails';
 import CreateBlog from '@/views/CreateBlog.vue';
+import BlogTag from '@/views/BlogTag.vue';
 
 const routes = [
   {
@@ -20,6 +20,12 @@ const routes = [
     path: '/create-blog',
     name: 'CreateBlog',
     component: CreateBlog,
+  },
+  {
+    path: '/tag-blog/:tag',
+    name: 'BlogTag',
+    component: BlogTag,
+    props: true,
   },
 ];
 
