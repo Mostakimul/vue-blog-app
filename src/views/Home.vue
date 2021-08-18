@@ -7,8 +7,8 @@
     <TheError :error="error" />
     <!-- Passign through props -->
     <div v-if="posts.length" class="grid grid-cols-4 gap-4">
-      <BlogList :posts="posts" class="col-span-3" />
-      <BlogTags :posts="posts" />
+      <BlogList :posts="posts" class="col-span-full lg:col-span-3" />
+      <BlogTags :posts="posts" class="col-span-full lg:col-span-1" />
     </div>
     <!-- loading -->
     <TheLoader v-else />

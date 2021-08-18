@@ -9,7 +9,7 @@
     <main>
       <form
         @submit.prevent="handleBlog"
-        class="bg-gradient-to-r from-green-400 to-green-600 w-1/2 mx-auto p-5 rounded-md"
+        class="bg-gradient-to-r from-green-400 to-green-600 w-full md:w-3/4 lg:w-1/2 mx-auto p-5 rounded-md"
       >
         <label class="block text-base text-white font-medium p-2 "
           >Title:
