@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import { vueBlogFirestore } from '../firebase/config';
 
 const getPosts = () => {
   const posts = ref([]);
@@ -7,13 +8,14 @@ const getPosts = () => {
   // fetching data
   const load = async () => {
     try {
-      let data = await fetch('http://localhost:3000/posts');
-      // console.log(data);
-      if (!data.ok) {
-        throw Error('Can not fetch data!!!');
-      }
-      posts.value = await data.json();
-      // console.log(posts.value);
+      // connection to firebase database
+      const response = await vueBlogFirestore.collection('posts').get();
+      // console.log(response.docs);
+      posts.value = response.docs.map((doc) => {
+        // console.log(doc.data());
+        // spreading the data will get all different propertise
+        return { ...doc.data(), id: doc.id };
+      });
     } catch (err) {
       error.value = err.message;
       // console.log(error.value);
