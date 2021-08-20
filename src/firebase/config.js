@@ -16,4 +16,7 @@ firebase.initializeApp(firebaseConfig);
 // initialize firestore
 const vueBlogFirestore = firebase.firestore();
 
-export { vueBlogFirestore };
+// timestamp
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+
+export { vueBlogFirestore, timestamp };

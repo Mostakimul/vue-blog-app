@@ -63,7 +63,7 @@ import TheHeader from '@/components/TheHeader.vue';
 import ThePageTitle from '@/components/ThePageTitle.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { vueBlogFirestore } from '../firebase/config';
+import { timestamp, vueBlogFirestore } from '../firebase/config';
 export default {
   name: 'CreateBlog',
   components: {
@@ -96,6 +96,7 @@ export default {
         title: title.value,
         body: body.value,
         tags: tags.value,
+        created_at: timestamp(),
       };
       // blog data to firebase
       const response = await vueBlogFirestore.collection('posts').add(blog);

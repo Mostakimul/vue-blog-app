@@ -9,7 +9,10 @@ const getPosts = () => {
   const load = async () => {
     try {
       // connection to firebase database
-      const response = await vueBlogFirestore.collection('posts').get();
+      const response = await vueBlogFirestore
+        .collection('posts')
+        .orderBy('created_at', 'desc')
+        .get();
       // console.log(response.docs);
       posts.value = response.docs.map((doc) => {
         // console.log(doc.data());
