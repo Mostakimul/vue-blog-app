@@ -19,6 +19,15 @@
         }}</router-link>
       </p>
       <p class="text-base text-gray-700">{{ blog.body }}</p>
+      <!-- delete button -->
+      <div class="text-center">
+        <button
+          @click="handleDelete"
+          class="bg-red-700 text-white py-1 px-3 rounded "
+        >
+          Delete Blog
+        </button>
+      </div>
     </div>
     <!-- loading -->
     <TheLoader v-else />
@@ -31,7 +40,8 @@ import TheLoader from '@/components/TheLoader.vue';
 import TheError from '@/components/TheError.vue';
 import TheHeader from '@/components/TheHeader.vue';
 import ThePageTitle from '@/components/ThePageTitle.vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
+import { vueBlogFirestore } from '../firebase/config';
 
 export default {
   props: {
@@ -48,6 +58,7 @@ export default {
   setup(props) {
     // useRoute (we can have different things like params)
     const route = useRoute();
+    const router = useRouter();
     // console.log(route.params.id);
 
     const page = 'Blog Details';
@@ -56,7 +67,17 @@ export default {
 
     load();
 
-    return { blog, error, page };
+    // delete
+    const handleDelete = async () => {
+      await vueBlogFirestore
+        .collection('posts')
+        .doc(props.id)
+        .delete();
+
+      router.push({ name: 'Home' });
+    };
+
+    return { blog, error, page, handleDelete };
   },
 };
 </script>
