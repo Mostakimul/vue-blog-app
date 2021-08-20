@@ -63,6 +63,7 @@ import TheHeader from '@/components/TheHeader.vue';
 import ThePageTitle from '@/components/ThePageTitle.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { vueBlogFirestore } from '../firebase/config';
 export default {
   name: 'CreateBlog',
   components: {
@@ -96,12 +97,9 @@ export default {
         body: body.value,
         tags: tags.value,
       };
-      // fetch request
-      await fetch('http://localhost:3000/posts', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(blog),
-      });
+      // blog data to firebase
+      const response = await vueBlogFirestore.collection('posts').add(blog);
+
       router.push({
         name: 'Home',
       });
